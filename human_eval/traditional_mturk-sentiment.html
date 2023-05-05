@@ -49,12 +49,13 @@
                       <strong>Instructions</strong>
                     </div>
                     <div class="card-body">
-                      You will be given a statement and two stylistic rewrites of the statement. You need to rank their quality based on fluency, content preservation, style and overall fit. 
-                     This should take about X minutes to complete.
+                      You will be given a statement and two rewrites of the statement. You need to rank their quality based on their <span class="task_toxicity">toxicity</span><span class="task_sentiment">sentiment (positive or negative)</span><span class="task_formality">formality (formal or informal)</span> level, meaning preservation and overall relevance/fit. 
+                     This should take about 10 minutes to complete.
                       <br />
                       
                       <br />
                       <small>
+                        <!--
                         <strong>Background on our research project</strong>
                         <p>
                           Here at CMU, we are passionate about understanding how
@@ -66,7 +67,7 @@
                           future task where we will ask for your ratings on the
                           degree of truthfulness in such statements.
                         </p>
-                        <!-- <h5>Background on our research project</h5>
+                         <h5>Background on our research project</h5>
                           <p>
                             Here at CMU, we are passionate about understanding how
                             potentially stereotyped language can be used against certain
@@ -180,32 +181,50 @@
                         <div class="col-sm-8">
                         <h4>Instructions</h4> 
                         Thanks for participating in this new task!
-                        We are trying to test out a few automatic systems for rewriting sentences with a particular style attribute. 
+                        We are trying to test out a few automatic systems for rewriting sentences to have a desired <span class="task_toxicity">toxicity (less offensive)</span><span class="task_sentiment">sentiment (positive or negative) level</span><span class="task_formality">formality (formal or informal)</span>. 
                         <br>
-                        Given an utterance from a dialog or a document, an instruction regarding the required target style attribute and two automatically generated rewrites, please answer the following four questions about the rewrites:
+                        Given an utterance from a dialog or a document, an instruction for rewriting from <span class="task_toxicity">toxic/offensive to non-toxic/non-offensive </span> <span class="task_sentiment">positive to negative or vice versa </span> <span class="task_formality">formal to informal or vice versa </span> and two automatically generated rewrites, please answer the following four questions about the rewrites:
                         <ul>
-                            <li><strong>Style</strong><br>Which of the rewritten utterances best exhibits the <em>required style attribute transfer </em> as in the instruction (regardless of meaning preservation)? </li>
-                            <li><strong>Meaning</strong><br>Which do you think is <em>closer in the intended meaning to the original</em> utterance</span> (regardless of the style change)?</li>
+                            <li><strong><span class="task_toxicity">Toxicity</span><span class="task_sentiment">Sentiment</span><span class="task_formality">Formality</span></strong><br>Which of the rewrites best exhibits the <em>required <span class="task_toxicity">toxicity</span><span class="task_sentiment">sentiment</span><span class="task_formality">formality</span> </em> as in the instruction (regardless of meaning preservation)? </li>
+                            <li><strong>Event level meaning </strong><br>Which do you think is <em>closer in meaning wrt event-level information to the original</em> utterance</span> (regardless of the <span class="task_toxicity">toxicity</span><span class="task_sentiment">sentiment</span><span class="task_formality">formality</span> change)?</li>
+                            <span class="task_toxicity"><li><strong>Intended Meaning </strong><br>Which do you think is <em>closer in the intended meaning of the original</em> utterance</span> (regardless of the <span class="task_toxicity">toxicity</span><span class="task_sentiment">sentiment</span><span class="task_formality">formality</span> change)?</li></span>
+                            <span class="task_formality"><li><strong>Intended Meaning </strong><br>Which do you think is <em>closer in the intended meaning of the original</em> utterance</span> (regardless of the <span class="task_toxicity">toxicity</span><span class="task_sentiment">sentiment</span><span class="task_formality">formality</span> change)?</li></span>
+                            
                             <!--<li><strong>Fluency</strong><br>Which of the rewritten utterances is the <em>most fluent</em> (regardless of meaning preservation)?</li>!-->
                             <li><strong>Well-suited</strong><br>Which of the rewritten utterances is <em>most well suited </em> to the entire context?</li>
                             
                         </ul>            
                         Some notes:
                         <ul>
-                            <li>What is <b>style strength</b>?<br> Style tranfer strength determines how well the rewrites exhibit the target style attribute necessary. We define style with attributes like sentiment, toxicity and formality. <br />  <br /> 
+                            <li>What is <b><span class="task_toxicity">toxicity</span><span class="task_sentiment">sentiment</span><span class="task_formality">formality</span> strength</b>?<br> <span class="task_toxicity">Toxicity</span><span class="task_sentiment">Sentiment</span><span class="task_formality">Formality</span> strength determines how well the rewrites exhibit the desired target <span class="task_toxicity">toxicity</span><span class="task_sentiment">sentiment</span><span class="task_formality">formality</span>.  <br />  <br /> 
                               <span class="task_sentiment"> For example, a sentence exhibiting a <em> positive </em> sentiment about a restaurant would describe the food as being delicious and the dining environment as vibrant. On the flip side, a sentence with a <em>negative</em> sentiment about a restaurant might describe the food as unhygenic and the dining environment to be unpleasant. </span> 
                               <span class="task_formality"> For example, a sentence which sounds serious/less trivial, polite/less casual might be percieved as <i>formal</i> language</span>
                               <span class="task_toxicity"> For example, an utterance which is obscene, indecent, insulting, hurtful, disgusting, morally repugnant, or which breaches commonly accepted standards of decent and proper speech is considered as <i>toxic/offensive</i> language.</span>
                             </li>  
-                            <li>What is <b>meaning similarity</b>?<br>Two sentences are similar in meaning or overall content if they describe <em>roughly the same event(s)</em> and have roughly the same interpretation, irrespective of style attribute differences. But, it's okay if a few details in the sentence get changed a bit.</li>
-                            <li>What is <b>well-suited</b>?<br> A rewrite can have the required style attribute and be similar in meaning or overall content of the original sentence, but it may not necessarily be <i>fitting / appropriate / relevant / well-suited</i> in the given context of the dialog or document. The rewrite should be meaningful and coherent while maintaining the flow of the conversation. </li>
+                            <li>What is <b>event-level meaning similarity</b>?<br>Two sentences are similar in event-level details if they describe <em>roughly the same event(s), entities, and their relations</em>, irrespective of <span class="task_toxicity">toxicity</span><span class="task_sentiment">sentiment</span><span class="task_formality">formality</span>-style attribute differences. But, it's okay if a few details in the sentence get changed a bit.
+                              <br /> <br /> 
+                            For example, when rewriting a news article, it is important to maintain the accuracy of the who, what, when, where, and why aspects of the story. 
+                            </li>
+                            <span class="task_toxicity"> <li>What is <b>intended meaning similarity</b>?<br>Two sentences are similar in their intended meaning if they capture <em>roughly the same overall message or purpose</em>.  Intended meaning goes beyond the specific details and focuses on <em>maintaining the author's intention, tone, and the implied meaning </em> in the rewritten text.  But again, it's okay if a few details in the sentence get changed a bit. 
+                              <br /> <br /> 
+                              For example, consider an original toxic sentence - "You're an idiot for thinking that way.". When this sentence is rewritten to make it less toxic and to maintain the intended meaning to express disagreement, it might sound like "I disagree with your perspective". 
+                            </li>
+                            </span>
+                            
+                             <span class="task_formality"> <li>What is <b>intended meaning similarity</b>?<br>Two sentences are similar in their intended meaning if they capture <em>roughly the same overall message or purpose</em>.  Intended meaning goes beyond the specific details and focuses on <em>maintaining the author's intention, tone, and the implied meaning </em> in the rewritten text.  But again, it's okay if a few details in the sentence get changed a bit. 
+                              <br /> <br /> 
+                              For example, consider an original informal utterance - "Hey, wanna grab some grub later?". When this utterance is rewritten in a more formal style, while maintaining its intended meaning of asking someone to join for a meal, it might be rewritten as "Hello, would you like to join me for a meal later?"
+                            </li> </span>
+                            
+                            
+                            <li>What is <b>well-suited</b>?<br> A rewrite can have the required <span class="task_toxicity">toxicity</span><span class="task_sentiment">sentiment</span><span class="task_formality">formality</span> and be similar in meaning to overall content of the original sentence, but it may not necessarily be <i>fitting / appropriate / relevant / well-suited</i> in the given context of the dialog or document. The rewrite should be meaningful and coherent while maintaining the flow of the conversation. </li>
                         </ul>
                         </div>
                         <div class="col-sm-4">
                         <p>
                             <h4>Background</h4>
-                            We are trying to test out a few different systems for automatically generating sentences, and want to see how they well they tranfer the style attribute while maintaining the meaning in sentences.
-                            Machines are not as good at discerning and disentangling concepts like <em>style</em> and <em>meaning</em>, so your help is crucial and very much appreciated!
+                            We are trying to test out a few automatic systems for automatically generating sentences, and want to see how they well they rewrite sentences from <span class="task_toxicity">toxic/offensive to non-toxic/non-offensive.</span> <span class="task_sentiment">positive to negative or vice versa. </span> <span class="task_formality">formal to informal or vice versa. </span> 
+                            Machines are not as good at discerning and disentangling concepts like <em><span class="task_toxicity">toxicity</span><span class="task_sentiment">sentiment</span><span class="task_formality">formality</span></em> and <em>meaning</em>, so your help is crucial and very much appreciated!
                         </p>
                         </div>
                 
@@ -215,14 +234,14 @@
                         <h4>Examples</h4>
                         <table style="width: 100%; font-size:9pt">
                         <tr>
-                            <th style="width: 38%; font-weight:bold">Context &amp; Original Sentence </th> <th style="width: 5%; font-weight:bold">Instruction</th><th style="width: 37%; font-weight:bold">Rewrites</th><th style="width: 5%; font-weight:bold">Style</th>
+                            <th style="width: 38%; font-weight:bold">Context &amp; Original Sentence </th> <th style="width: 5%; font-weight:bold">Instruction</th><th style="width: 35%; font-weight:bold">Rewrites</th><th style="width: 10%; font-weight:bold;word-break:break-all;"><span class="task_toxicity">Least Offensive</span><span class="task_sentiment">Target Sentiment</span><span class="task_formality">Target Formality</span></th>
                             <th style="width: 5%; font-weight:bold">Meaning</th><th style="width: 5%; font-weight:bold">Well-suited</th>
                         </tr>
 
                         <tr class="task_sentiment">
                             <td rowspan="2" > <p style="background-color:lightgray"> <u><em>Preceding sentences:</em></u> <br /> dr. goldberg offers everything i look for in a general practitioner. he's nice and easy to talk to without being patronizing </p>
                                 <u><em>Current sentence:</em></u> <br /> he's always on time in seeing his patients </td>
-                            <td rowspan="2">Rewrite the response from <b>positve</b> to <b>negative</b> sentiment.</td>
+                            <td rowspan="2">Rewrite the response from <b>positve</b> to <u><b>negative</b></u> sentiment.</td>
                             <td> He's never late in seeing his patients.</td><td></td><td></td><td></td>
                         </tr>
                         <tr class="task_sentiment">
@@ -233,7 +252,7 @@
                         <tr class="task_sentiment">
                           <td rowspan="2" > <p style="background-color:lightgray"> <u><em>Dialog History:</em></u> <br /> Very well , thank you . I'm meeting my wife and daughter for lunch at twelve.Would you care to join us ? </p>
                               <u><em>Response:</em></u> <br /> I'd love to , but I'm afraid I can't . </td>
-                          <td rowspan="2">Rewrite the response from <b>negative</b> to <b>positive</b> sentiment.</td>
+                          <td rowspan="2">Rewrite the response from <b>negative</b> to <u><b>positive</b></u> sentiment.</td>
                           <td> I'm happy to do it !</td><td></td><td>&#10004;</td><td></td>
                         </tr>
                         <tr class="task_sentiment">
@@ -244,7 +263,7 @@
                         <tr class="task_formality">
                             <td rowspan="2" > <p style="background-color:lightgray"> <u><em>Previous Comment:</em></u> <br /> This is so crazy. We have people all over this world. cameras everywhere and yet a giant ship manages to go missing for almost ten years.  </p>
                                 <u><em>Response:</em></u> <br /> Not as many people with cameras in the ocean, duh...And ocean is really big, like REALLY big ;) </td>
-                            <td rowspan="2">Rewrite the response from <b>informal</b> to <b>formal</b> language.</td>
+                            <td rowspan="2">Rewrite the response from <b>informal</b> to <u><b>formal</b></u> language.</td>
                             <td> Fewer people are utilizing cameras in the ocean, as the ocean is immensely vast.</td><td>&#10004;</td><td></td><td></td>
                         </tr>
                         <tr class="task_formality">
@@ -255,7 +274,7 @@
                         <tr class="task_formality">
                           <td rowspan="2" > <p style="background-color:lightgray"> <u><em>Previous Comment:</em></u> <br /> While reading todays news, I found an interesting text about the investigation on the ISAF and U.S guy, General John Allen.  </p>
                               <u><em>Response:</em></u> <br /> The general is now in the FBI’s spotlight after discovering lots of mails between him and Jill Kelley.  </td>
-                          <td rowspan="2">Rewrite the response from <b>informal</b> to <b>formal</b> language.</td>
+                          <td rowspan="2">Rewrite the response from <b>informal</b> to <u><b>formal</b></u> language.</td>
                           <td> The FBI has initiated an investigation into General John Allen in light of the numerous emails exchanged between him and Jill Kelley.</td><td>&#10004;</td><td></td><td>&#10004;</td>
                         </tr>
                         <tr class="task_formality">
@@ -266,7 +285,7 @@
                         <tr class="task_formality">
                           <td rowspan="2" > <p style="background-color:lightgray"> <u><em>Previous Sentence in document:</em></u> <br /> Zimbabwe is divided into 8 provinces and 2 cities with provincial status (Harare and Bulawayo).  </p>
                               <u><em>Response:</em></u> <br /> The current Legal Aid Directorate (LAD) is staffed by 15 lawyers, all based in Harare, representing the needs of Zimbabwe's 12 million citizens.  </td>
-                          <td rowspan="2">Rewrite the response from <b>formal</b> to <b>informal</b> language.</td>
+                          <td rowspan="2">Rewrite the response from <b>formal</b> to <u><b>informal</b></u> language.</td>
                           <td> LAD's got 15 lawyers based in Harare, all working to meet the needs of Zimbabwe's 12 million people.</td><td>&#10004;</td><td></td><td>&#10004;</td>
                         </tr>
                         <tr class="task_formality">
@@ -277,7 +296,7 @@
                         <tr class="task_toxicity">
                             <td rowspan="2" > <p style="background-color:lightgray"> <u><em>Dialog History:</em></u> <br />  I have a lot of chinese friends, I'm trying to be humorous. </p>
                                 <u><em>Response:</em></u> <br />  Oh, try a joke about Asian people ever eating dogs </td>
-                            <td rowspan="2">Rewrite the response from <b>offensive</b> to <b>non or less offensive</b> language.</td>
+                            <td rowspan="2">Rewrite the response from <b>offensive</b> to <u><b>non or less offensive</b></u> language.</td>
                             <td> Oh, try a joke about Asian people's love for trying different kinds of cuisine.</td><td></td><td>&#10004;</td><td>&#10004;</td>
                         </tr>
                         <tr class="task_toxicity">
@@ -287,7 +306,7 @@
                         <tr class="task_toxicity">
                           <td rowspan="2" > <p style="background-color:lightgray"> <u><em>Dialog History:</em></u> <br />  Is your boss as pathetic as mine? I want to push him into moving traffic. </p>
                               <u><em>Response:</em></u> <br />  I feel like strangling my boss. </td>
-                          <td rowspan="2">Rewrite the response from <b>offensive</b> to <b>non or less offensive</b> language.</td>
+                          <td rowspan="2">Rewrite the response from <b>offensive</b> to <u><b>non or less offensive</b></u> language.</td>
                           <td> I am incredibly frustrated with my boss too!</td><td>&#10004;</td><td>&#10004;</td><td>&#10004;</td>
                         </tr>
                         <tr class="task_toxicity">
@@ -317,8 +336,8 @@
                     <h3> Task </h3>
                     <div class="row">
                         <div class="col-sm-11">
-                        <div class="story-excerpt" style="min-width:400px;width:50%;background:#eac8ca93">
-                        <p style="font-size:12pt;"><b>Previous Context:</b></p>
+                        <div class="story-excerpt" id="context_type_div" style="min-width:400px;width:50%;background:#eac8ca93;">
+                        <p style="font-size:12pt;" id="context_type_p"><b>${context_type}:</b></p>
                         <p><span id="context" style="font-size:12pt;">${context}</span></p>
                         </div>
                         
@@ -326,13 +345,13 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-11">
-                        <div class="story-excerpt" style="min-width:400px;width:50%;background:#EAC8CA">
-                        <p style="font-size:12pt;"><b>Original Sentence:</b></p>
+                        <div class="story-excerpt" id="original_type_div" style="min-width:400px;width:50%;background:#EAC8CA">
+                        <p style="font-size:12pt;" id="original_type_p"><b>${original_type} (original):</b></p>
                         <p><span id="original" style="font-size:12pt;word-break:break-all;">${original}</span></p>
                         </div>
                         
                         </div>
-                        <p style="padding-left: 2em;"><b>Instruction:</b><span id="instruction" style="font-size:12pt;word-break:break-all;"> Rewrite the original sentence from ${style1} to ${style2}</span></p>
+                        <p style="padding-left: 2em;"><b>Instruction:</b><span id="instruction" style="font-size:12pt;word-break:break-all;"> Rewrite the original sentence/response <span class="task_toxicity">using non-toxic or non-offensive language</span><span class="task_sentiment">from ${style1} to ${style2} sentiment</span><span class="task_formality">from ${style1} to ${style2} language</span></span></p>
                     </div>
 
                     <h4>Rewrites:</h4>
@@ -368,85 +387,134 @@
                         </table>
                       </div>
                     </div>
-                      <div id="div1" style="margin-left:10px;margin-top:5px;font-size:12pt;line-height:1.5em">
-                        Q2: Which of these best exhibits <b>required style attribute</b> specified in the instruction (regardless of meaning preservation)?
+
+                    
+                    <div class="form-group" style="margin-left:10px;margin-top:5px;font-size:12pt;line-height:1.5em" id="form-group-div2">
+                
+                      <label for="formControlRange" style="margin-bottom: 1em"
+                        >Q2: How confident do you feel about your preferred choice of rewrite? 
                         <br>
-                        <small>Pick the rewrite which is most likely to be associated with the target style in instruction. </small>
+                        <small>Pick your confidence level</small>
+                        <br></label>
+                        
+                        <!--<div class="ticks" style="width: 100%">
+                        <span class="tick" style="word-break:break-all;"> <small>All of it needs <br /> to change </small></span>
+                        
+                        <span class="tick" style="word-break:break-all;"> <small>Barely anything </small></span>
+                      </div>!-->
+                      <input type="hidden" id="formRangeQ2Values" name="formRangeQ2Values" value="" />
+                      <input type="range" class="form-control-range"  min="1"  max="10"  value="5"  id="formRangeQ2" name="formRangeQ2"   onInput="handleColors(2)"
+                        onchange="handleChange({arg1: 2, arg2: this.value})"
+                      />
+                      <div class="ticks" id="ticks2">
+                        <span class="tick" id="tick1">10%</span
+                        ><span class="tick" id="tick2">20%</span
+                        ><span class="tick" id="tick3">30%</span
+                        ><span class="tick" id="tick4">40%</span
+                        ><span class="tick" id="tick5">50%</span
+                        ><span class="tick" id="tick6">60%</span
+                        ><span class="tick" id="tick7">70%</span
+                        ><span class="tick" id="tick8">80%</span
+                        ><span class="tick" id="tick9">90%</span
+                        ><span class="tick" id="tick10">100%</span
+                        >
+                      </div>
+                    </div>
+
+                      <div id="div3" style="margin-left:10px;margin-top:5px;font-size:12pt;line-height:1.5em">
+                        Q3: Which of these rewrites is <b><span class="task_toxicity">least offensive/toxic</span><span class="task_sentiment">most ${style2}</span><span class="task_formality">most ${style2} in style</span></b>? (regardless of preservation of event-level meaning<span class="task_formality"> and intended meaning</span> <span class="task_toxicity">and intended meaning</span>)?
+                        <br>
+                        <small>Pick the rewrite which is most likely to be associated <span class="task_toxicity">as non-offensive/non-toxic</span><span class="task_sentiment">with ${style2}-style attributes</span><span class="task_formality">${style2} language</span>. </small>
                         <br>
                         <div style="margin:10px">
                           <table class="questiondiv" style="font-size:14px; ">
                             <tr style="margin-top:1em; border: none">
-                            <td style="padding:5pt;"><input type="radio" required name="qStyle" id="r2a" value="a"><label for="r2a">&nbsp; Rewrite A </label></td><td style="word-break:break-all;">${rewriteA}</td></tr>
-                            <tr style="border: none"><td style="padding:5pt;"><input type="radio" required name="qStyle" id="r2b" value="b"><label for="r2b">&nbsp; Rewrite B</label></td><td style="word-break:break-all;">${rewriteB}</td></tr>
+                            <td style="padding:5pt;"><input type="radio" required name="qStyle" id="r3a" value="a"><label for="r3a">&nbsp; Rewrite A </label></td><td style="word-break:break-all;">${rewriteA}</td></tr>
+                            <tr style="border: none"><td style="padding:5pt;"><input type="radio" required name="qStyle" id="r3b" value="b"><label for="r3b">&nbsp; Rewrite B</label></td><td style="word-break:break-all;">${rewriteB}</td></tr>
                           </table>
                         </div>
                       </div>
                       <br>
-                      <div  id="div2" style="margin-left:10px;margin-top:5px;font-size:12pt;line-height:1.5em">
-                        Q3: Which do you think is <strong>closer to the intended meaning</strong> of the original sentence  (regardless of style transferred)?
+                      <div  id="div4" style="margin-left:10px;margin-top:5px;font-size:12pt;line-height:1.5em">
+                        Q4: Which rewrite do you think is <strong>closer to the event-level information</strong> in the original sentence?
                         <br>
-                        <small>Pick the sentence that has the general events and meaning closest to the original. 
-                          <span class="task_sentiment"><br /> For this sentiment task, concentrate on meaning preservation of all attribute-independent content i.e independent of sentiment-specific markers. (e.g., what properties of a restaurant are
+                        <small>Pick the sentence that has the general events, entities and relations closest to those occuring in the original sentence. 
+                          <!--<span class="task_sentiment"><br /> For this sentiment task, concentrate on preservation of all attribute-independent content i.e independent of sentiment-specific markers. (e.g., what properties of a restaurant are
                             being described)
-                          </span>
+                          </span>!-->
                         </small>
                         <br>
                         <div style="margin:10px">
                           <table class="questiondiv" style="font-size:14px">
                             <tr style="margin-top:1em; border: none">
-                            <td style="padding:5pt;"><input type="radio" required name="qMeaning" id="r3a" value="a"><label for="r3a">&nbsp; Rewrite A </label></td><td style="word-break:break-all;">${rewriteA}</td></tr>
-                            <tr style="border: none"><td style="padding:5pt;"><input type="radio" required name="qMeaning" id="r3b" value="b"><label for="r3b">&nbsp; Rewrite B</label></td><td style="word-break:break-all;">${rewriteB}</td></tr>
+                            <td style="padding:5pt;"><input type="radio" required name="qEventMeaning" id="r4a" value="a"><label for="r4a">&nbsp; Rewrite A </label></td><td style="word-break:break-all;">${rewriteA}</td></tr>
+                            <tr style="border: none"><td style="padding:5pt;"><input type="radio" required name="qEventMeaning" id="r4b" value="b"><label for="r4b">&nbsp; Rewrite B</label></td><td style="word-break:break-all;">${rewriteB}</td></tr>
+                          </table>
+                        </div>
+                      </div>
+                      <br />
+                      <div class="task_formality" id="div5" style="margin-left:10px;margin-top:5px;font-size:12pt;line-height:1.5em">
+                        Q5: Which do you think is <strong>closer to the intended meaning</strong> of the original sentence?
+                        <br>
+                        <small>Pick the sentence that has the closest implied overall message as the original sentence. 
+                          
+                        </small>
+                        <br>
+                        <div style="margin:10px">
+                          <table class="questiondiv" style="font-size:14px">
+                            <tr style="margin-top:1em; border: none">
+                            <td style="padding:5pt;"><input type="radio" required name="qIntendedMeaning" id="r5a" value="a"><label for="r5a">&nbsp; Rewrite A </label></td><td style="word-break:break-all;">${rewriteA}</td></tr>
+                            <tr style="border: none"><td style="padding:5pt;"><input type="radio" required name="qIntendedMeaning" id="r5b" value="b"><label for="r5b">&nbsp; Rewrite B</label></td><td style="word-break:break-all;">${rewriteB}</td></tr>
+                          </table>
+                        </div>
+                      </div>
+
+                      <div class="task_toxicity" id="div5" style="margin-left:10px;margin-top:5px;font-size:12pt;line-height:1.5em">
+                        Q5: Which do you think is <strong>closer to the intended meaning</strong> of the original sentence?
+                        <br>
+                        <small>Pick the sentence that has the closest implied overall message as the original sentence. 
+                          
+                        </small>
+                        <br>
+                        <div style="margin:10px">
+                          <table class="questiondiv" style="font-size:14px">
+                            <tr style="margin-top:1em; border: none">
+                            <td style="padding:5pt;"><input type="radio" required name="qIntendedMeaning" id="r5a" value="a"><label for="r5a">&nbsp; Rewrite A </label></td><td style="word-break:break-all;">${rewriteA}</td></tr>
+                            <tr style="border: none"><td style="padding:5pt;"><input type="radio" required name="qIntendedMeaning" id="r5b" value="b"><label for="r5b">&nbsp; Rewrite B</label></td><td style="word-break:break-all;">${rewriteB}</td></tr>
                           </table>
                         </div>
                       </div>
                       
                       <br>
                       
-                      <div  id="div4" style="margin-left:10px;margin-top:5px;font-size:12pt;line-height:1.5em">
-                        Q4: Which sentence is best <strong>well-suited / relevant / flows better / specific </strong> the overall conversation / document flow?
+                      <div  id="div6" style="margin-left:10px;margin-top:5px;font-size:12pt;line-height:1.5em">
+                        <span class="task_toxicity">Q6</span><span class="task_sentiment">Q5</span><span class="task_formality">Q6</span>: Which sentence is best <strong>well-suited / relevant / flows better / specific </strong> with the overall preceding conversation / document flow?
                         <br>
-                        <small>Try to pick the rewrite that has the best tradeoff between meaning and style, but also is coherent with the preceding context.</small>
+                        <small>Try to pick the rewrite that has the best tradeoff between meaning <span class="task_toxicity task_formality">(both event level and intended meanings)</span> and <span class="task_toxicity">least toxic language</span><span class="task_sentiment">${style2} sentiment</span><span class="task_formality">${style2} language</span>, but also is coherent and fitting with the preceding context.</small>
                         <br>
                         <div style="margin:10px">
                           <table class="questiondiv" style="font-size:14px">
                             <tr style="margin-top:1em; border: none">
-                            <td style="padding:5pt;"><input type="radio" required name="qFit" id="r4a" value="a"><label for="r4a">&nbsp; Rewrite A </label></td><td style="word-break:break-all;">${rewriteA}</td></tr>
-                            <tr style="border: none"><td style="padding:5pt;"><input type="radio" required name="qFit" id="r4b" value="b"><label for="r4b">&nbsp; Rewrite B</label></td><td style="word-break:break-all;">${rewriteB}</td></tr>
+                            <td style="padding:5pt;"><input type="radio" required name="qFit" id="r6a" value="a"><label for="r6a">&nbsp; Rewrite A </label></td><td style="word-break:break-all;">${rewriteA}</td></tr>
+                            <tr style="border: none"><td style="padding:5pt;"><input type="radio" required name="qFit" id="r6b" value="b"><label for="r6b">&nbsp; Rewrite B</label></td><td style="word-break:break-all;">${rewriteB}</td></tr>
                           </table>
                         </div>
                       </div>
 
-                      <div
-                      class="form-group"
-                      style="margin-left:10px;margin-top:5px;font-size:12pt;line-height:1.5em"
-                      id="form-group-div5">
+                      <div class="form-group" style="margin-left:10px;margin-top:5px;font-size:12pt;line-height:1.5em" id="form-group-div7">
                 
                         <label for="formControlRange" style="margin-bottom: 1em"
-                          >Q5. On a scale of 1-5, how much of the original sentence or meaning should be changed to really transfer the style from ${style1} to ${style2} </label
-                        >
+                          ><span class="task_toxicity">Q7</span><span class="task_sentiment">Q6</span><span class="task_formality">Q7</span>. On a scale of 1-5, how much of the original sentence or meaning in general should be changed to really <span class="task_toxicity">make it less offensive/toxic</span><span class="task_sentiment">transfer the sentiment from ${style1} to ${style2} </span><span class="task_formality">change from ${style1} to ${style2} langauge</span>?</label>
                         <div class="ticks" style="width: 100%">
                           <span class="tick" style="word-break:break-all;"> <small>All of it needs <br /> to change </small></span>
                           
                           <span class="tick" style="word-break:break-all;"> <small>Barely anything </small></span>
                         </div>
-                        <input
-                          type="hidden"
-                          id="formRangeQ5Values"
-                          name="formRangeQ5Values"
-                          value=""
+                        <input type="hidden" id="formRangeQ7Values" name="formRangeQ7Values" value="" />
+                        <input type="range" class="form-control-range"  min="1"  max="5"  value="3"  id="formRangeQ7" name="formRangeQ7"   onInput="handleColors(7)"
+                          onchange="handleChange({arg1: 7, arg2: this.value})"
                         />
-                        <input
-                          type="range"
-                          class="form-control-range"
-                          min="1"
-                          max="5"
-                          value="3"
-                          id="formRangeQ5"
-                          name="formRangeQ5"
-                          onInput="handleColors(5)"
-                          onchange="handleChange({arg1: 5, arg2: this.value})"
-                        />
-                        <div class="ticks" id="ticks5">
+                        <div class="ticks" id="ticks7">
                           <span class="tick" id="tick1">1</span
                           ><span class="tick" id="tick2">2</span
                           ><span class="tick" id="tick3">3</span
@@ -541,6 +609,7 @@
           0
         );
         for (let i = 0; i < ticks.length; i++) {
+          
           if (i != _R.value - 1) {
             ticks[i].style.color = "gray";
           } else {
@@ -898,6 +967,21 @@
         }
       }
       
+
+      var context_value=document.getElementById("context_type_p").innerText;
+      if (context_value != "Preceding sentences:"){
+          var context_var=document.getElementById("context_type_div")
+          context_var.style.marginLeft = '10pt'
+          context_var.style.marginRight = 'auto'
+
+          var text_var=document.getElementById("original_type_div")
+          text_var.style.marginRight = '10pt'
+          text_var.style.marginLeft = 'auto'
+          console.log("correct one")
+      }else{
+          console.log(context_value)
+      }
+
       
       
       
@@ -1104,6 +1188,7 @@
         padding: 1em;
         display:table;
         
+        
     }
     tr.questiondiv {
         border: none;
@@ -1118,14 +1203,22 @@
     /*
     span.task_sentiment {display:none;}
     tr.task_sentiment {display:none;}
+    div.task_sentiment {
+      display:none;
+    }
     */
-
+    
+    div.task_formality {
+      display:none;
+    }
     span.task_formality {display:none;}
     tr.task_formality {display:none;}
-
+    
     span.task_toxicity {display:none;}
     tr.task_toxicity {display:none;}
-    
+    div.task_toxicity {
+      display:none;
+    }
     
 
       
