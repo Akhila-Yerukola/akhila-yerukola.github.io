@@ -242,11 +242,11 @@
                             <td rowspan="2" > <p style="background-color:lightgray"> <u><em>Preceding sentences:</em></u> <br /> dr. goldberg offers everything i look for in a general practitioner. he's nice and easy to talk to without being patronizing </p>
                                 <u><em>Current sentence:</em></u> <br /> he's always on time in seeing his patients </td>
                             <td rowspan="2">Rewrite the response from <b>positve</b> to <u><b>negative</b></u> sentiment.</td>
-                            <td> He's never late in seeing his patients.</td><td></td><td></td><td></td>
+                            <td> He's never late in seeing his patients.</td><td>&#10004;</td><td></td><td></td>
                         </tr>
                         <tr class="task_sentiment">
                             <td> he's often running behind in seeing his patients
-                            </td><td>&#10004;</td><td>&#10004;</td><td>&#10004;</td>
+                            </td><td></td><td>&#10004;</td><td>&#10004;</td>
                         </tr>
                         
                         <tr class="task_sentiment">
@@ -351,14 +351,14 @@
                         </div>
                         
                         </div>
-                        <p style="padding-left: 2em;"><b>Instruction:</b><span id="instruction" style="font-size:12pt;word-break:break-all;"> Rewrite the original sentence/response <span class="task_toxicity">using non-toxic or non-offensive language</span><span class="task_sentiment">from ${style1} to ${style2} sentiment</span><span class="task_formality">from ${style1} to ${style2} language</span></span></p>
+                        <p style="padding-left: 2em;"><b>Instruction:</b><span id="instruction" style="font-size:12pt;word-break:break-all;"> Rewrite the original sentence/response <b><span class="task_toxicity">using non-toxic or non-offensive language</span><span class="task_sentiment">from ${style1} to <u>${style2}</u> sentiment</span><span class="task_formality">from ${style1} to <u>${style2}</u> language</span></b></span></p>
                     </div>
 
                     <h4>Rewrites:</h4>
                     <div class="row">
                         
                         <div class="col-sm-6">
-                            <div class="story-excerpt" style="min-width:300px;width:30%">
+                            <div class="story-excerpt" style="min-width:400px;width:30%">
                             
                             <p style="font-size:12pt;"><b>rewrite A:</b></p>
                             <div id="rewriteA" style="font-size:12pt;word-break:break-all;">${rewriteA}</div>
@@ -366,7 +366,7 @@
                         </div>
 
                         <div class="col-sm-6">
-                            <div class="story-excerpt" style="min-width:300px;width:30%">
+                            <div class="story-excerpt" style="min-width:400px;width:30%">
                             
                             <p style="font-size:12pt;"><b>rewrite B:</b></p> 
                             <div id="rewriteB" style="font-size:12pt;word-break:break-all;">${rewriteB}</div>
@@ -593,7 +593,16 @@
         $("#attentionCheckCorrect").val(attnIx + 1);
       };
       function validate() {
-        return $(":invalid").length == 0;
+        
+        var flag=true;
+        for (let i = 0; i < $(":invalid").length; i++) {
+          
+          if (!($(":invalid")[i].id.includes("r5"))){
+            flag=false;
+            break;
+          }
+        } 
+        return flag;
       }
       function handleChange(obj) {
         let qIdx = obj.arg1;
