@@ -130,3 +130,18 @@ name {
 span.highlight {
   background-color: #ffffd0;
 }
+
+a,h3.article-title a:hover {
+  color: #7f6862;
+  text-decoration: none;
+  transition: color 0.25s ease;
+  cursor: pointer;
+}
+
+a:hover,a:focus {
+  color: #111;
+  text-decoration: underline;
+}
+
+.year { border-top: 1px solid #ccc; color: #8c8a8a; margin: .5em -13em -1.5ex -1em; padding-top: -25ex; text-align: right; }
+
