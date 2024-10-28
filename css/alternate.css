@@ -59,7 +59,7 @@ body {
     line-height: 1.5;
     color: #212529;
     text-align: left;
-    background-color: #e7dddd;
+    background-color: #ffffff;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -9786,7 +9786,7 @@ body {
     font-size: 1rem;
     line-height: inherit;
     color: inherit;
-    background-color: #e6dbdb;
+    background-color: #ffffff;
     margin-top: 70px;
     padding-top: 0;
     counter-reset: captions
@@ -11097,7 +11097,7 @@ ul.share li:hover i {
 }
 
 .home-section {
-    background-color: #e6dbdb;
+    background-color: #ffffff;
     padding: 60px 0 0 0;
     animation: intro 0.3s both;
     animation-delay: 0.15s
@@ -11132,7 +11132,7 @@ ul.share li:hover i {
 }
 
 .home-section:nth-of-type(even) {
-    background-color: #e6dbdb
+    background-color: #ffffff
 }
 
 .dark .home-section {
