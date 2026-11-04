@@ -155,3 +155,64 @@ padding:18px 20px;
 box-shadow:0 1px 3px rgba(0,0,0,.04)
 }
 .research-box h2{margin-top:0}
+
+/* Paper award badge (e.g. Best Resource Paper) */
+.paper-award {
+  display: inline-block;
+  margin: 6px 0 4px;
+  padding: 3px 10px 3px 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #7a2e1c;
+  background: #fbe9e3;
+  border: 1px solid #b95741;
+  border-left: 4px solid #b95741;
+  border-radius: 4px;
+}
+.paper-award .fa-award {
+  color: #b95741;
+  margin-right: 2px;
+}
+
+/* Award highlight in the news list */
+.news-award {
+  background: #fbe9e3;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+.news-award .fa-award {
+  color: #b95741;
+}
+
+/* Press coverage under a paper: an outlined "News" pill matching the buttons, then outlet links */
+.paper-press {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 2px 0 0;
+  font-size: .7rem;
+  line-height: 1;
+}
+.paper-press .press-label {
+  display: inline-block;
+  margin-right: 8px;
+  padding: 5px .4rem;
+  font-size: .6rem;
+  font-weight: 700;
+  color: #b95741;
+  border: 1px solid #b95741;
+  border-radius: .2rem;
+}
+.paper-press a {
+  color: #b95741;
+  font-size: .7rem;
+}
+.paper-press a:hover {
+  color: #111;
+  text-decoration: underline;
+}
+.paper-press .press-sep {
+  margin: 0 6px;
+  color: #aaa;
+}
